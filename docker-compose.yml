@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  schemaspy:
+    build: ./schemaspy
+    image: schemaspy/schemaspy:6.1.0
+    container_name: "schemaspy"
+    volumes:
+      - ./schemaspy/output:/output
+      - ./schemaspy/config/schemaspy.properties:/app/schemaspy.properties:ro
+    command: "java -jar schemaspy.jar -debug"
+
+  nginx_schemaspy:
+    image: nginx
+    container_name: "nginx_schemaspy"
+    depends_on:
+      - schemaspy
+    ports:
+      - "8080:80"
+    volumes:
+      - ./schemaspy/output:/usr/share/nginx/html:ro
