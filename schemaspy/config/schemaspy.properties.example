@@ -1,0 +1,9 @@
+schemaspy.t=pgsql
+schemaspy.dp=/app/postgresql-connector-java.jar
+schemaspy.host=host.docker.internal
+schemaspy.port=5432
+schemaspy.db=db_name
+schemaspy.u=user
+schemaspy.p=pass
+schemaspy.o=/output
+schemaspy.schemas=public
